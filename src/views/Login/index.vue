@@ -9,7 +9,7 @@
     <!-- 邮箱 密码 创建账户 -->
     <div class="login-content">
       <div class="login-worp">
-        <span class="email">邮箱地址</span>
+        <span class="email">手机号</span>
         <div class="fe-email">
           <input class="a-email" type="email" placeholder="" />
         </div>
@@ -38,7 +38,7 @@
           <span>Shopbop的新客户？</span>
         </div>
         <div class="account">
-          <span>创建您的 Shopbop 账户</span>
+          <span @click="submit">创建您的 Shopbop 账户</span>
         </div>
       </div>
     </div>
@@ -58,6 +58,12 @@
 <script>
 export default {
   name: 'Login',
+  methods: {
+    //去注册按钮
+    submit() {
+      this.$router.push('/register');
+    },
+  },
 };
 </script>
 

@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Login />
+    <tetsHome />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import Register from './views/Register';
-import Login from './views/Login';
+import tetsHome from './views/testHome';
 export default {
   name: 'App',
   components: {
-    Login,
+    tetsHome,
   },
 };
 </script>
