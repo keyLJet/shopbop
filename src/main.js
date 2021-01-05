@@ -3,6 +3,8 @@ import App from './App.vue';
 
 import './plugins/element';
 
+import "swiper/swiper-bundle.min.css";
+
 Vue.config.productionTip = false;
 
 new Vue({

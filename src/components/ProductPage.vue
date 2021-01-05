@@ -49,14 +49,22 @@
               </li>
             </ul>
             <div class="weiboicon">
-              <img src="../assets/image/weibo.png" alt="" />
+              <img src="../assets/image/wiebo-logo_1-0.jpg" alt="" />
+              <img
+                style="display: none"
+                src="../assets/image/weibo.png"
+                alt=""
+              />
             </div>
           </div>
           <!-- 主图区 -->
           <div class="image_main">
             <img class="showpic" src="../assets/image/1.jpg" alt="" />
           </div>
-          <div class="image_bottom">选购搭配服饰</div>
+          <div class="image_bottom">
+            选购搭配服饰
+            <div class="arrow down"></div>
+          </div>
         </div>
         <!-- 右边商品信息展示区 -->
         <div class="right_column">
@@ -109,15 +117,330 @@
             <a href="">免费国际快递 + 轻松退货</a>
           </div>
           <!-- 商品介绍 -->
-          <div class="productDetils"></div>
+          <div class="productDetils">
+            <header class="boxHeaders">
+              <span class="sliderElement"></span>
+              <label class="detailsHeader productDetails">商品描述</label>
+              <label class="detailsHeader sizeDetials">尺寸及版型</label>
+            </header>
+            <section class="product_details_wrapper details_wrapper">
+              <div class="product_details_text">
+                <div class="long_description">
+                  <ul class="bulleted_attributes">
+                    <li>面料: 厚实无弹绉绸</li>
+                    <li>系扣衣领和透明硬纱蝴蝶结</li>
+                    <li>亮片圆点花纹图案搭配合成树脂泪滴元素</li>
+                    <li>长袖</li>
+                    <li>背面隐形拉链</li>
+                    <li>表层: 60% 三醋酸纤维/40% 聚酯纤维</li>
+                    <li>饰边: 100% 真丝</li>
+                    <li>衬里: 100% 聚酯纤维</li>
+                    <li>干洗</li>
+                    <li>中国进口</li>
+                  </ul>
+                  <div class="product_code">
+                    风格编号
+                    <span>TORYB48491</span>
+                  </div>
+                </div>
+                <span class="collapsed_fade"></span>
+              </div>
+              <div class="show_more_less">
+                <span class="show_more"
+                  >显示更多
+                  <div class="arrow down"></div>
+                </span>
+                <span class="show_less hide"
+                  >收起
+                  <div class="arrow down"></div>
+                </span>
+              </div>
+            </section>
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- 轮播图 -->
+    <div class="likeContainer">
+      <header class="header_title">
+        <label class="product_similarities">您可能还会喜欢</label>
+        <div class="swiper-container" ref="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/image/a.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/b.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/c.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/d.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/e.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/f.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/g.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/h.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/j.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/k.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/l.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </header>
+    </div>
+    <!-- 轮播图 -->
+    <div class="likeContainer">
+      <header class="header_title">
+        <label class="product_similarities">更多 Tory Burch</label>
+        <div class="swiper-container" ref="swiper1">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/image/a.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/b.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/c.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/d.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/e.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/f.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/g.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/h.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/j.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/k.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="../assets/image/l.jpg" />
+              <div class="info">
+                <div class="brand">Tory Burch</div>
+                <div class="brand_name">裥褶连衣裙</div>
+                <div class="brand_price">US$348.60</div>
+                <img class="heartContainer" src="../assets/image/like.png" />
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </header>
+    </div>
+    <div class="designerBioSection">
+      <h3 class="designerBioSectionHeading">品牌介绍</h3>
+      <div class="designerBioSectionContent">
+        Tory Burch
+        曾被《福布斯》杂质评选为“世界上最具影响力的女人”之一，她的审美观念正是其优雅别致的个人风格的折射。自从她的同名品牌
+        2004 年首次亮相以来，就已成为精致、高贵和优雅的代名词。Tory Burch
+        品牌是经典的美国运动装，充盈着触手可及的奢华感，其做工之精致，完全无懈可击，从服饰、手提包、鞋类和配饰一应俱全，Gwyneth
+        Paltrow、ennifer Lopez 和 Oprah Winfrey 都是该品牌的忠实粉丝。
+        <a href="">查看所有 Tory Burch 评论</a>
+      </div>
+    </div>
+    <div class="reviews_container">
+      <div class="reviews_section_header no_reviews">
+        <h2 class="detailSectionHeading">评论和评分</h2>
+        <p class="first_review_message">帮助别人选择！抢评价沙发。</p>
+        <a class="loginPopover" href="">
+          <input type="botton" class="btn_accent" value="评论此商品" />
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import Swiper, { Navigation } from "swiper";
+
+Swiper.use([Navigation]);
+export default {
+  name: "ProductPage",
+  methods: {},
+  mounted() {
+    this.$nextTick(() => {
+      new Swiper(this.$refs.swiper1, {
+        slidesPerView: 5, // 每页显示轮播图的数量
+        // spaceBetween: 12, // 轮播图间距
+        slidesPerGroup: 5, // 切换时切换轮播图的数量
+        loop: true,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    });
+    this.$nextTick(() => {
+      new Swiper(this.$refs.swiper, {
+        slidesPerView: 5, // 每页显示轮播图的数量
+        // spaceBetween: 12, // 轮播图间距
+        slidesPerGroup: 5, // 切换时切换轮播图的数量
+        loop: true,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    });
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -126,6 +449,8 @@ html body {
   width: 100%;
   padding: 0;
   margin: 0;
+  font-size: 14px;
+  color: black;
 }
 .productContainer {
   width: 1024px;
@@ -216,6 +541,15 @@ html body {
         text-align: center;
         font-weight: 500;
         cursor: pointer;
+        .arrow {
+          border: solid #000;
+          border-width: 0 1px 1px 0;
+          display: inline-block;
+          padding: 3px;
+          margin-left: 3px;
+          position: static;
+          -webkit-transform: rotate(45deg) translate(0, -3px);
+        }
       }
     }
     .right_column {
@@ -356,6 +690,253 @@ html body {
           color: #000;
           text-decoration: none;
           border-bottom: 1px solid #000;
+        }
+      }
+      .productDetils {
+        position: relative;
+        margin: 54px 0 35px 0;
+        border-top: solid 1px #e7e3df;
+        .boxHeaders {
+          background-color: #f3f1ef;
+          position: relative;
+          top: -16px;
+          width: 340px;
+          height: 28px;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 2px;
+          padding: 2px;
+          .sliderElement {
+            background-color: #fff;
+            width: 170px;
+            height: 28px;
+            border-radius: 2px;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+            position: absolute;
+            left: 2px;
+          }
+          .detailsHeader {
+            font-size: 12px;
+            background-color: transparent;
+            display: inline-block;
+            width: 170px;
+            height: 28px;
+            border-radius: 2px;
+            line-height: 28px;
+            color: #000;
+            cursor: pointer;
+            text-transform: capitalize;
+            position: absolute;
+            top: 2px;
+          }
+          .productDetails {
+            left: 2px;
+            font-weight: 500;
+          }
+          .sizeDetials {
+            right: 2px;
+          }
+        }
+        .details_wrapper {
+          display: block;
+        }
+        .product_details_wrapper {
+          padding: 5px 10px 0 10px;
+          .product_details_text {
+            font-size: 12px;
+            font-weight: 300;
+            overflow: hidden;
+            padding: 5px 0 0 0;
+            max-height: 80px;
+            .long_description {
+              .bulleted_attributes {
+                margin: 3px 0 6px 0;
+                padding-left: 17px;
+              }
+              ul {
+                padding: 0;
+                line-height: 20px;
+              }
+              .product_code {
+                font-weight: 500;
+                margin-bottom: 15px;
+                span {
+                  font-weight: 600;
+                }
+              }
+            }
+            .collapsed_fade {
+              position: relative;
+              width: 100%;
+              height: 4em;
+              top: -4em;
+              left: 0;
+              pointer-events: none;
+              background-image: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0),
+                #fff 90%
+              );
+            }
+          }
+          .show_more_less {
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 12px;
+            font-size: 12px;
+            .show_less {
+              display: none;
+            }
+            .arrow {
+              border: solid #000;
+              border-width: 0 1px 1px 0;
+              display: inline-block;
+              padding: 3px;
+              margin-left: 3px;
+              position: static;
+              -webkit-transform: rotate(45deg) translate(0, -3px);
+            }
+          }
+        }
+      }
+    }
+  }
+  .likeContainer {
+    margin-top: 0 !important;
+    border-top: 1px solid #e7e3df;
+    margin-bottom: 2em;
+    .header_title {
+      position: relative;
+      text-align: center;
+      top: -18px;
+      .product_similarities {
+        background-color: white;
+        border: 0;
+        box-shadow: none;
+        color: black;
+        font-size: 16px;
+        width: auto;
+        display: inline-block;
+        padding: 0.2em 1em;
+        margin-left: -0.4em;
+        height: 28px;
+        border-radius: 2px;
+        line-height: 28px;
+        margin-bottom: 0.5em;
+      }
+      .swiper-container {
+        margin-top: 20px;
+        --swiper-navigation-color: #000;
+        --swiper-navigation-size: 24px;
+        .swiper-slide {
+          cursor: pointer;
+          width: 190px;
+          text-align: center;
+          font-size: 12px;
+          margin-bottom: 18px;
+
+          img {
+            width: 130px;
+          }
+          .info {
+            padding-top: 10px;
+            cursor: pointer;
+            .brand {
+              font-weight: 550;
+              font-size: 12px;
+              line-height: 14px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            .brand_name {
+              line-height: 26px;
+              font-size: 12px;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+            .brand_price {
+              font-weight: 550;
+              letter-spacing: 0.5px;
+              line-height: 17px;
+              white-space: normal;
+              font-size: 11px;
+            }
+            .heartContainer {
+              float: right;
+              margin: 0 2.5em 0 0;
+              cursor: pointer;
+              width: 11px;
+              height: 9.4px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .designerBioSection {
+    margin: 55px 100px 81px 100px;
+    text-align: center;
+    font-size: 14px;
+    .designerBioSectionHeading {
+      margin: 0;
+      margin-bottom: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      line-height: 19px;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .designerBioSectionContent {
+      a {
+        text-decoration: none;
+        color: black;
+        background: transparent;
+      }
+    }
+  }
+  .reviews_container {
+    font-size: 12px;
+    line-height: 18px;
+    padding-bottom: 53px;
+    text-align: center;
+    .reviews_section_header {
+      margin-bottom: 19px;
+      .detailSectionHeading {
+        margin: 0;
+        padding-top: 0;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 19px;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+      .first_review_message {
+        margin: 6px 0 18px 0;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        background: transparent;
+        .btn_accent {
+          color: white;
+          background: #ee4a1b;
+          border-color: #ee4a1b;
+          float: none;
+          padding: 12px 47px;
+          display: inline-block;
+          font-size: 16px;
+          margin-right: 0;
+          font-weight: 300;
+          cursor: pointer;
+          width: 82px;
+          height: auto;
+          border: 1px solid;
+          text-transform: capitalize;
+          text-align: center;
         }
       }
     }
