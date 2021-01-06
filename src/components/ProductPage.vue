@@ -33,34 +33,70 @@
           <div class="image_sidebar">
             <ul>
               <li class="imglist">
-                <img src="../assets/image/1.jpg" alt="" />
+                <img
+                  src="../assets/image/1.jpg"
+                  alt=""
+                  @mouseenter="getPicSrc"
+                />
               </li>
               <li class="imglist">
-                <img src="../assets/image/2.jpg" alt="" />
+                <img
+                  src="../assets/image/2.jpg"
+                  alt=""
+                  @mouseenter="getPicSrc"
+                />
               </li>
               <li class="imglist">
-                <img src="../assets/image/3.jpg" alt="" />
+                <img
+                  src="../assets/image/3.jpg"
+                  alt=""
+                  @mouseenter="getPicSrc"
+                />
               </li>
               <li class="imglist">
-                <img src="../assets/image/4.jpg" alt="" />
+                <img
+                  src="../assets/image/4.jpg"
+                  alt=""
+                  @mouseenter="getPicSrc"
+                />
               </li>
               <li class="imglist">
-                <img src="../assets/image/6.jpg" alt="" />
+                <img
+                  src="../assets/image/5.jpg"
+                  alt=""
+                  @mouseenter="getPicSrc"
+                />
+              </li>
+              <li class="imglist">
+                <img
+                  src="../assets/image/6.jpg"
+                  alt=""
+                  @mouseenter="getPicSrc"
+                />
               </li>
             </ul>
             <div class="weiboicon">
-              <img src="../assets/image/wiebo-logo_1-0.jpg" alt="" />
               <img
-                style="display: none"
-                src="../assets/image/weibo.png"
+                class="grey"
+                src="../assets/image/wiebo-logo_1-0.jpg"
                 alt=""
               />
+              <img class="black" src="../assets/image/weibo.png" alt="" />
             </div>
           </div>
           <!-- 主图区 -->
-          <div class="image_main">
-            <img class="showpic" src="../assets/image/1.jpg" alt="" />
+          <div class="imgContainer">
+            <div class="image_main">
+              <div class="likeHeart"></div>
+              <img class="showpic" :src="showPic" alt="" />
+            </div>
+            <div class="event" @mousemove="move" ref="event"></div>
+            <div class="mask" ref="mask"></div>
+            <div class="showBigPic">
+              <img :src="showPic" alt="" ref="bigImg" />
+            </div>
           </div>
+
           <div class="image_bottom">
             选购搭配服饰
             <div class="arrow down"></div>
@@ -119,12 +155,24 @@
           <!-- 商品介绍 -->
           <div class="productDetils">
             <header class="boxHeaders">
-              <span class="sliderElement"></span>
-              <label class="detailsHeader productDetails">商品描述</label>
-              <label class="detailsHeader sizeDetials">尺寸及版型</label>
+              <span
+                :class="{ sliderElement: true, slider_right: showSizeDetails }"
+              ></span>
+              <label
+                class="detailsHeader productDetails"
+                @click="productDetails"
+                >商品描述</label
+              >
+              <label class="detailsHeader sizeDetials" @click="sizeDetials"
+                >尺寸及版型</label
+              >
             </header>
             <section class="product_details_wrapper details_wrapper">
-              <div class="product_details_text">
+              <div
+                class="product_details_text"
+                :id="showMoreText ? 'expanded' : ''"
+                ref="showMore"
+              >
                 <div class="long_description">
                   <ul class="bulleted_attributes">
                     <li>面料: 厚实无弹绉绸</li>
@@ -145,14 +193,14 @@
                 </div>
                 <span class="collapsed_fade"></span>
               </div>
-              <div class="show_more_less">
-                <span class="show_more"
+              <div class="show_more_less" @click="showMore">
+                <span v-if="!showMoreText" class="show_more"
                   >显示更多
                   <div class="arrow down"></div>
                 </span>
-                <span class="show_less hide"
+                <span v-else class="show_less hide"
                   >收起
-                  <div class="arrow down"></div>
+                  <div class="arrow up"></div>
                 </span>
               </div>
             </section>
@@ -408,11 +456,78 @@
 <script>
 import Swiper, { Navigation } from "swiper";
 
+import throttle from "lodash/throttle";
+
 Swiper.use([Navigation]);
 export default {
   name: "ProductPage",
-  methods: {},
+  data() {
+    return {
+      showPic: "http://localhost:8080/img/1.c5bfded3.jpg",
+      showMoreText: false,
+      showProductDetails: true,
+      showSizeDetails: false,
+    };
+  },
+  methods: {
+    getPicSrc(event) {
+      this.showPic = event.target.src;
+    },
+    // 放大镜效果
+    move: throttle(function (event) {
+      let left, top;
+      const maskDiv = this.$refs.mask;
+      const bigImg = this.$refs.bigImg;
+
+      // 取出相关的数据: 事件的offsetX/offsetY, mask <div>的宽度maskWidth
+      const { offsetX, offsetY } = event;
+      // console.log(offsetX, offsetY);
+      // const maskWidth = maskDiv.clientWidth
+      const eventWidth = this.eventWidth;
+      const eventHeight = this.eventHeight;
+      const maskWidth = this.$refs.mask.clientWidth;
+      const maskHeight = this.$refs.mask.offsetHeight;
+
+      // 计算left, top
+      left = offsetX - maskWidth / 2;
+      top = offsetY - maskHeight / 2;
+      // console.log(left,top)
+      // left和top必须在[0, maskWidth]区间内
+      if (left < 0) {
+        left = 0;
+      } else if (left > eventWidth - maskWidth) {
+        left = eventWidth - maskWidth;
+      }
+      if (top < 0) {
+        top = 0;
+      } else if (top > eventHeight - maskHeight) {
+        top = eventHeight - maskHeight;
+      }
+
+      // 指定mask <div>的坐标值(left, top)
+      maskDiv.style.left = left + "px";
+      maskDiv.style.top = top + "px";
+
+      // 指定大图 <img>的坐标值(left, top)
+      bigImg.style.left = -(1 / 0.4) * 1.3 * left + "px";
+      bigImg.style.top = -(1 / 0.333) * top + "px";
+    }, 50),
+    showMore() {
+      this.showMoreText = !this.showMoreText;
+    },
+    productDetails() {
+      this.showProductDetails = true;
+      this.showSizeDetails = false;
+    },
+    sizeDetials() {
+      this.showProductDetails = false;
+      this.showSizeDetails = true;
+    },
+  },
   mounted() {
+    this.eventWidth = this.$refs.event.clientWidth;
+    this.eventHeight = this.$refs.event.offsetHeight;
+
     this.$nextTick(() => {
       new Swiper(this.$refs.swiper1, {
         slidesPerView: 5, // 每页显示轮播图的数量
@@ -509,8 +624,26 @@ html body {
         flex-flow: column;
         justify-content: space-between;
         align-items: center;
-        .weiboicon img {
+        .weiboicon {
+          margin-top: 10px;
           width: 25px;
+          cursor: pointer;
+          .grey {
+            width: 100%;
+            display: block;
+          }
+          .black {
+            width: 100%;
+            display: none;
+          }
+        }
+        .weiboicon:hover {
+          .grey {
+            display: none;
+          }
+          .black {
+            display: block;
+          }
         }
         ul {
           padding: 0;
@@ -527,13 +660,91 @@ html body {
           }
         }
       }
-      .image_main {
-        display: block;
-        padding-left: 44px;
+      .imgContainer {
+        position: relative;
         width: 357px;
         height: 633px;
+        left: 44px;
+        .image_main {
+          width: 100%;
+          height: 100%;
+          display: block;
+          .likeHeart::before {
+            z-index: 5;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 52px;
+            width: 52px;
+            background-size: contain;
+            background-image: url(https://images-cn.ssl-images-amazon.cn/images/S/sash/bP2i8XO0zrYdZrK.png);
+            background-repeat: no-repeat;
+            content: "";
+          }
+          .likeHeart::after {
+            z-index: 4;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 52px;
+            width: 52px;
+            background-size: contain;
+            animation: heartAnimation 0.5s forwards;
+            background-image: url(https://images-cn.ssl-images-amazon.cn/images/S/sash/xUeBtjPmsVTOJWv.png);
+            content: "";
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .event {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0px;
+          z-index: 10;
+        }
+        .mask {
+          z-index: 8;
+          width: 142px;
+          height: 214px;
+          border: 1px solid oldlace;
+          background-color: rgba(247, 250, 246, 0.5);
+          position: absolute;
+          left: 0px;
+          top: 0;
+          display: none;
+        }
+        .showBigPic {
+          width: 130%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 110%;
+          overflow: hidden;
+          z-index: 998;
+          display: none;
+          background: white;
+          img {
+            width: calc(1 / 0.4 * 100%);
+            max-width: calc(1 / 0.4 * 100%);
+            height: calc(1 / 0.333 * 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
+        .event:hover ~ .mask,
+        .event:hover ~ .showBigPic {
+          display: block;
+        }
       }
+
       .image_bottom {
+        margin-top: -40px;
         width: 100%;
         font-size: 12px;
         padding-top: 5px;
@@ -716,6 +927,9 @@ html body {
             position: absolute;
             left: 2px;
           }
+          .slider_right {
+            left: 172.5px;
+          }
           .detailsHeader {
             font-size: 12px;
             background-color: transparent;
@@ -780,14 +994,14 @@ html body {
               );
             }
           }
+          #expanded {
+            max-height: 1000px;
+          }
           .show_more_less {
             cursor: pointer;
             font-weight: 500;
             margin-top: 12px;
             font-size: 12px;
-            .show_less {
-              display: none;
-            }
             .arrow {
               border: solid #000;
               border-width: 0 1px 1px 0;
@@ -795,7 +1009,12 @@ html body {
               padding: 3px;
               margin-left: 3px;
               position: static;
+            }
+            .arrow.down {
               -webkit-transform: rotate(45deg) translate(0, -3px);
+            }
+            .arrow.up {
+              -webkit-transform: rotate(-135deg) translate(-3px, 0);
             }
           }
         }
