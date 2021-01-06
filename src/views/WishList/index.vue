@@ -24,35 +24,15 @@
           </li>
           <li class="leftNavCategoryLi">
             <a href="#">收藏夹</a>
-            <ul class="leftNavSubCategoryLi">
-              <li>
-                <a href="#">我的所有收藏</a>
-              </li>
-              <li>
-                <a href="#">促销</a>
-              </li>
-              <li>
-                <hr class="separator" />
-              </li>
-              <li>
-                <a href="#">包袋</a>
-              </li>
-              <li>
-                <a href="#">名师精品馆</a>
-              </li>
-              <li>
-                <hr class="separator" />
-              </li>
-              <li>
-                <a href="#">帮助</a>
-              </li>
-            </ul>
           </li>
           <li class="leftNavCategoryLi">
             <a href="#">我的评论</a>
           </li>
           <li class="leftNavCategoryLi">
             <a href="#">我的心愿单</a>
+          </li>
+          <li class="leftNavCategoryLi help">
+            <a href="#">帮助</a>
           </li>
         </ul>
       </div>
@@ -150,6 +130,18 @@ html body {
     .left-nav {
       width: 130px;
       padding: 6px 12px 0 2px;
+      .leftNavCategory {
+        color: #000;
+        font-weight: 560;
+        font-size: 12px;
+        .leftNavCategoryLi {
+          height: 26px;
+          line-height: 25px;
+        }
+        .help{
+          padding-left: 10px;
+        }
+      }
     }
     .right-content {
       width: 875px;

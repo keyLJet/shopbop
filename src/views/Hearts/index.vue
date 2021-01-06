@@ -23,28 +23,28 @@
             <li class="leftNavCategoryLi">
               <a href="#">我的品牌</a>
             </li>
-            <li class="leftNavCategoryLi">
-              <a href="#">收藏夹</a>
-              <ul class="leftNavSubCategoryLi">
-                <li>
+            <li class="favorite">
+              <a class="title" href="#">收藏夹</a>
+              <ul class="favoriteList">
+                <li class="favoriteListItem collect">
                   <a href="#">我的所有收藏</a>
                 </li>
-                <li>
+                <li class="favoriteListItem">
                   <a href="#">促销</a>
                 </li>
-                <li>
+                <li class="favoriteListItem">
                   <hr class="separator" />
                 </li>
-                <li>
+                <li class="favoriteListItem">
                   <a href="#">包袋</a>
                 </li>
-                <li>
+                <li class="favoriteListItem">
                   <a href="#">名师精品馆</a>
                 </li>
-                <li>
+                <li class="favoriteListItem">
                   <hr class="separator" />
                 </li>
-                <li>
+                <li class="favoriteListItem">
                   <a href="#">帮助</a>
                 </li>
               </ul>
@@ -61,23 +61,96 @@
           <div class="quickFind">
             <div class="quickFindLeft">
               <span class="quickFindTitle">筛选</span>
-              <select name="designer" id="designer" class="quickFindDropDown">
-                <option value="">Mansur Gavriel</option>
+              <el-select
+                class="select"
+                v-model="designers"
+                multiple
+                placeholder="设计师"
+                size="mini"
+                style="margin-left: 20px"
+                @change="changeDesigner"
+              >
+                <el-option
+                  v-for="item in hearts"
+                  :key="item.id"
+                  :label="item.brand"
+                  :value="item.brand"
+                >
+                </el-option>
+              </el-select>
+              <el-select
+                class="select"
+                v-model="sizes"
+                multiple
+                placeholder="尺寸"
+                size="mini"
+                style="margin-left: 20px"
+                @change="changeSize"
+              >
+                <el-option
+                  v-for="item in hearts"
+                  :key="item.id"
+                  :label="item.size"
+                  :value="item.size"
+                >
+                </el-option>
+              </el-select>
+              <el-select
+                class="select"
+                v-model="colors"
+                multiple
+                placeholder="颜色"
+                size="mini"
+                style="margin-left: 20px; margin-right: 20px"
+                @change="changeColor"
+              >
+                <el-option
+                  v-for="item in hearts"
+                  :key="item.id"
+                  :label="item.color"
+                  :value="item.color"
+                >
+                </el-option>
+              </el-select>
+              <!-- <select name="designer" id="designer" class="quickFindDropDown">
+                <option value="">设计师</option>
                 <option value="">Tory Burch</option>
               </select>
-              <select name="color" id="color" class="quickFindDropDown">
-                <option value="">米白色</option>
-                <option value="">黑色</option>
+              <select name="size" id="size" class="quickFindDropDown">
+                <option value="">尺寸</option>
+                <option value="">M</option>
               </select>
-              <span>清除所有</span>
+              <select name="color" id="color" class="quickFindDropDown">
+                <option value="">颜色</option>
+                <option value="">黑色</option>
+              </select> -->
+              <span>
+                <a href="#" class="clearAll" @click="clear">清除所有</a>
+              </span>
             </div>
             <div class="sort">
               <span>排序</span>
-              <select name="sort" id="sort" class="sortList">
+              <el-select
+                class="select"
+                v-model="sortTypes"
+                multiple
+                placeholder="上架时间"
+                size="mini"
+                style="margin-left: 6px"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                >
+                </el-option>
+              </el-select>
+              <!-- <select name="sort" id="sort" class="sortList">
                 <option value="">上架时间</option>
                 <option value="">价格：从低到高</option>
                 <option value="">价格：从高到低</option>
-              </select>
+              </select> -->
             </div>
           </div>
           <div class="heartRemove">
@@ -90,14 +163,11 @@
           <div class="pagination-container-top"></div>
           <div class="product-list">
             <ul class="product-container">
-              <li class="product-item" v-for="item in hearts" :key="item.id">
-                <img class="productImg"
-                  :src="item.imgUrl"
-                  alt=""
-                />
-                <div class="brand">{{item.brand}}</div>
-                <div class="title">{{item.tittle}}</div>
-                <div class="price">{{item.price}}</div>
+              <li class="product-item" v-for="item in showList" :key="item.id">
+                <img class="productImg" :src="item.imgUrl" alt="" />
+                <div class="brand">{{ item.brand }}</div>
+                <div class="title">{{ item.tittle }}</div>
+                <div class="price">{{ item.price }}</div>
               </li>
               <!-- <li class="product-item">
                 <img
@@ -121,18 +191,69 @@
 <script>
 import { reqGetHeartsList } from "../../api/heartsNwishList";
 
-
 export default {
   name: "Hearts",
-  data(){
+  data() {
     return {
-      hearts:[],
-    }
+      hearts: [],
+      showList: [],
+      options: [
+        {
+          value: "priceUp",
+          label: "价格：从低到高",
+        },
+        {
+          value: "priceDown",
+          label: "价格：从高到高",
+        },
+      ],
+      designers: [],
+      sizes: [],
+      colors: [],
+      sortTypes: [],
+    };
   },
-  async mounted(){
-    let hearts = await reqGetHeartsList()
-    this.hearts = hearts
-  }
+  methods: {
+    changeDesigner(designers) {
+      console.log(designers);
+      if (designers.length) {
+        this.showList = this.hearts.filter(
+          (item) => designers.indexOf(item.brand) !== -1
+        );
+        // console.log(this.showList);
+      } else {
+        this.showList = this.hearts;
+      }
+    },
+    changeSize(sizes) {
+      if (sizes.length) {
+        this.showList = this.hearts.filter(
+          (item) => sizes.indexOf(item.size) !== -1
+        );
+        // console.log(this.showList);
+      } else {
+        this.showList = this.hearts;
+      }
+    },
+    changeColor(colors) {
+      if (colors.length) {
+        this.showList = this.hearts.filter(
+          (item) => colors.indexOf(item.color) !== -1
+        );
+        // console.log(this.showList);
+      } else {
+        this.showList = this.hearts;
+      }
+    },
+    clear(){
+      console.log("111")
+    },
+  },
+  async mounted() {
+    let hearts = await reqGetHeartsList();
+    this.hearts = hearts;
+    this.showList = hearts;
+  },
 };
 </script>
 
@@ -168,20 +289,56 @@ html body {
     .left-nav {
       width: 130px;
       padding: 6px 12px 0 2px;
+      .leftNavCategory {
+        color: #000;
+        font-weight: 500;
+        font-size: 12px;
+        .leftNavCategoryLi {
+          height: 26px;
+          line-height: 25px;
+        }
+        .favorite {
+          .title {
+            text-decoration: underline;
+          }
+          .favoriteList {
+            .favoriteListItem {
+              width: 115px;
+              height: 26px;
+              padding-left: 9px;
+              line-height: 25px;
+              .separator {
+                border: 0;
+                border-top: 1px solid #dfdfdf;
+                border-bottom: 1px solid #dfdfdf;
+                clear: both;
+                margin: 15px 0;
+              }
+            }
+            .collect a {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
     .right-content {
       width: 875px;
-      // flex-grow: 1;
-      .quickFind { 
+      .quickFind {
         display: flex;
         justify-content: space-between;
         margin: 6px;
         .quickFindLeft {
-          //  width: 300px;
+          .select {
+            width: 100px;
+          }
+          .clearAll {
+            text-decoration: underline;
+          }
         }
-        .sort {
-          //  width: 102px;
-        }
+        // .sort {
+        //   //  width: 102px;
+        // }
       }
       .heartRemove {
         text-align: right;
@@ -193,7 +350,7 @@ html body {
         flex-wrap: wrap;
         .product-item {
           padding: 18px 6px;
-          .productImg{
+          .productImg {
             width: 206px;
             height: 365px;
           }
