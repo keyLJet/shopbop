@@ -28,6 +28,13 @@ Vue.config.productionTip = false;
 Vue.prototype.$API = API;
 Vue.prototype.$BASE_API = process.env.VUE_APP_BASE_API;
 
+//引入公共资源
+import './styles/reset.css'
+//引入路由
+import router from './router'
+//引入elementui库
+import './plugins/element.js'
+
 new Vue({
   render: h => h(App),
   router,
