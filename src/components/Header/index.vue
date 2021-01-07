@@ -22,10 +22,6 @@
         <!-- 右 -->
         <div class="header_right">
           <el-menu
-<<<<<<< HEAD
-=======
-            :default-active="activeIndex"
->>>>>>> Leizijie
             class="el-menu-demo"
             mode="horizontal"
             background-color="#faf9f9"
@@ -52,7 +48,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
 
     <!-- LOGO -->
     <div :class="flag ? 'fixedNav' : ''">
@@ -422,337 +417,6 @@
           <span class="iconfont icon-sousuo"></span>
           <input type="text" v-model="searchText" placeholder="请用英文搜索" />
         </div>
-=======
-    <div>
-      <!-- LOGO -->
-      <div class="logo">
-        <a href="">
-          <img
-            src="https://images-cn.ssl-images-amazon.cn/images/G/01/Shopbop/p/pcs/shopbop/media/3/images/logos/rebrand_shopbop_logo_2x_1-3.png"
-            alt=""
-          />
-        </a>
-      </div>
-    </div>
-
-    <div class="topNav">
-      <el-menu
-        :default-active="activeIndex"
-        class="el-menu-demo"
-        mode="horizontal"
-      >
-        <el-submenu index="1">
-          <router-link to="/shoplist" slot="title">新款上市</router-link>
-          <div class="topNav_title">
-            <ul>
-              <h3 >新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="2">
-          <h3 slot="title" class="title" style="color: #a886c7">
-            运动服和休闲服
-          </h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="3">
-          <h3 slot="title">我们的最爱</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="4">
-          <h3 slot="title">品牌</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="5">
-          <h3 slot="title">服装</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="6">
-          <h3 slot="title">鞋履</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="7">
-          <h3 slot="title">包袋</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="8">
-          <h3 slot="title">配饰</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-
-        <el-submenu index="9">
-          <h3 slot="title">折扣促销</h3>
-          <div class="topNav_title">
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <h3>新款上市</h3>
-              <li><a href="">新款上市</a></li>
-              <li><a href="">今日新品</a></li>
-              <li><a href="">本周新品</a></li>
-              <li><a href="">全球热卖榜单</a></li>
-              <li><a href="">名师精品推荐</a></li>
-              <li><a href="">全部新款上市</a></li>
-            </ul>
-            <ul>
-              <img src="../../assets/images/26.jpg" alt="" />
-              <div><a href="">新品上线：Tory Burch</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-            <ul>
-              <img src="../../assets/images/27.jpg" alt="" />
-              <div><a href="">加入 Yours Truly Shopbop Rewards</a></div>
-              <div><a href="">选购故事</a></div>
-            </ul>
-          </div>
-        </el-submenu>
-      </el-menu>
-      <div class="topNav_Ipt">
-        <span class="iconfont icon-sousuo"></span>
-        <input type="text" placeholder="请用英文搜索" />
->>>>>>> Leizijie
       </div>
     </div>
   </div>
@@ -760,7 +424,6 @@
 
 <script>
 export default {
-<<<<<<< HEAD
   name: "Headers",
   props: ["flied", "setBigLogo"],
   data() {
@@ -782,9 +445,6 @@ export default {
       this.logo = this.setBigLogo;
     },
   },
-=======
-  name: "header",
->>>>>>> Leizijie
 };
 </script>
 
@@ -795,7 +455,6 @@ export default {
   font-weight: 800;
   background-color: #faf9f9;
 }
-<<<<<<< HEAD
 .fixedNav {
   background: white;
   left: 0;
@@ -804,10 +463,6 @@ export default {
   width: 100%;
   z-index: 1000;
   transition: all 600ms ease 0s;
-=======
-#header a {
-  text-decoration: none;
->>>>>>> Leizijie
 }
 .header {
   width: 1024px;
@@ -872,12 +527,8 @@ export default {
 }
 
 .logo img {
-<<<<<<< HEAD
   width: 120px;
   height: 30px;
-=======
-  height: 45px;
->>>>>>> Leizijie
   margin: 27px auto 28px auto;
   position: absolute;
   bottom: 0;
@@ -885,14 +536,11 @@ export default {
   right: 0;
   top: 0;
 }
-<<<<<<< HEAD
 .logo .active {
   width: 181px;
   height: 45px;
   transition: all 500ms ease 0s;
 }
-=======
->>>>>>> Leizijie
 
 .topNav {
   width: 1024px;
@@ -921,10 +569,6 @@ export default {
   height: 34px;
   line-height: 34px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> Leizijie
 .topNav .topNav_Ipt {
   width: 140px;
   height: 18px;
@@ -940,7 +584,6 @@ export default {
   margin-left: 10px;
 }
 
-<<<<<<< HEAD
 .ui-box {
   text-decoration: none;
   border: none;
@@ -999,8 +642,6 @@ export default {
   transition-delay: 0s;
 }
 
-=======
->>>>>>> Leizijie
 /deep/ .el-icon-arrow-down:before {
   content: none;
 }
@@ -1010,12 +651,4 @@ export default {
   line-height: 40px;
   color: #000;
 }
-<<<<<<< HEAD
-=======
-
-/deep/ .el-menu--collapse .el-menu .el-submenu,
-.el-menu--popup {
-  width: 0;
-}
->>>>>>> Leizijie
 </style>

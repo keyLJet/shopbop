@@ -27,7 +27,7 @@
       <a href="#"><img src="../../../assets/images/7.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/8.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/9.jpg" alt="" /></a>
-      <a href="#"
+      <!-- <a href="#"
         ><video
           autoplay
           muted
@@ -35,11 +35,11 @@
           type="video/mp4"
           src="../../../assets/viedo/1.mp4"
         ></video
-      ></a>
+      ></a> -->
       <a href="#"><img src="../../../assets/images/10.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/11.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/12.jpg" alt="" /></a>
-      <a href="#"
+      <!-- <a href="#"
         ><video
           autoplay
           muted
@@ -47,11 +47,11 @@
           type="video/mp4"
           src="../../../assets/viedo/2.mp4"
         ></video
-      ></a>
+      ></a> -->
       <a href="#"><img src="../../../assets/images/13.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/14.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/15.jpg" alt="" /></a>
-      <a href="#"
+      <!-- <a href="#"
         ><video
           autoplay
           muted
@@ -59,7 +59,7 @@
           type="video/mp4"
           src="../../../assets/viedo/3.mp4"
         ></video
-      ></a>
+      ></a> -->
       <a href="#"><img src="../../../assets/images/16.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/17.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/18.jpg" alt="" /></a>

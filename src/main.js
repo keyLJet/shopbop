@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-=======
-import Vue from 'vue';
-import App from './App.vue';
+
 import './mock/data';
-import store from "./store";
->>>>>>> wangyalou
 
 // 引入公共样式
 import './style/reset.css'
@@ -37,8 +32,7 @@ Vue.prototype.$BASE_API = process.env.VUE_APP_BASE_API;
 
 //引入公共资源
 import './styles/reset.css'
-//引入路由
-import router from './router'
+
 //引入elementui库
 import './plugins/element.js'
 
