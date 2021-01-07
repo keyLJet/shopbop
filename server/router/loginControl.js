@@ -5,14 +5,15 @@ const { verify } = require('../utils/jwt')
 const router = express.Router()
 
 // 登录
-router.post('/login', async (req, res) => {
+router.post('/api/user/login', async (req, res) => {
   const { password, phone } = req.body
   // 去数据库里面验证手机号和密码
+
   const user = await User.findOne({ password: md5(password), phone })
   // 验证不通过返回状态码201，返回手机号或密码不正确
   if (!user) {
     return res.json({
-      status: 201,
+      code: 201,
       message: '手机号或密码不正确'
     })
   }
@@ -21,15 +22,18 @@ router.post('/login', async (req, res) => {
   try {
     // await verify(md5(password))
     return res.json({
-      status: 200,
+      code: 200,
+      message: '登录成功',
+      ok: true,
       data: {
-        token: user.token
+        token: user.token,
+        name: "你在教我做事!"
       }
     })
   } catch (error) {
     // 过期了
     return res.json({
-      status: 201,
+      code: 201,
       message: 'token已过期，请重新激活'
     })
   }

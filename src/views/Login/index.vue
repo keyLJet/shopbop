@@ -11,19 +11,37 @@
       <div class="login-worp">
         <span class="email">手机号</span>
         <div class="fe-email">
-          <input class="a-email" type="email" placeholder="" />
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <input
+              class="a-email"
+              type="email"
+              placeholder=""
+              v-model="user.phone"
+            />
+            <br />
+            <p :style="{ color: 'red', fontSize: '12px' }">{{ errors[0] }}</p>
+          </ValidationProvider>
         </div>
         <div class="login-pasword">
           <span class="pasword">密码</span>
           <span><a href="" class="forget">忘记密码</a></span>
         </div>
         <div class="fe-email">
-          <input class="a-email" type="password" placeholder="" />
+          <input
+            class="a-email"
+            type="password"
+            placeholder=""
+            v-model="user.password"
+          />
         </div>
-        <button class="login-btn">登录</button>
+        <button class="login-btn" @click="login">登录</button>
         <div class="details">
           <label for="">
-            <input class="checkbox" type="checkbox" />
+            <input
+              class="checkbox"
+              type="checkbox"
+              v-model="user.isAutoLogin"
+            />
             <span class="login-state">记住登录状态。</span>
             <a href="">详情</a>
           </label>
@@ -37,8 +55,8 @@
         <div class="shopbop">
           <span>Shopbop的新客户？</span>
         </div>
-        <div class="account">
-          <span @click="submit">创建您的 Shopbop 账户</span>
+        <div class="account" @click="toRegister">
+          <span>创建您的 Shopbop 账户</span>
         </div>
       </div>
     </div>
@@ -56,13 +74,54 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { ValidationProvider, extend } from 'vee-validate';
+import { required } from 'vee-validate/dist/rules';
+extend('required', required);
 export default {
   name: 'Login',
+  data() {
+    return {
+      user: {
+        phone: '',
+        password: '',
+      },
+      isAutoLogin: true,
+    };
+  },
+  computed: {
+    ...mapState({
+      token: (state) => state.user.token,
+      name: (state) => state.user.name,
+    }),
+  },
+  //自动登录：
+  //在login组件判断是否有token
+  //有就认为登录过，跳转到首页
+  created() {
+    if (this.token) {
+      this.$router.push('/');
+    }
+  },
   methods: {
-    //去注册按钮
-    submit() {
+    //登录去首页
+    async login() {
+      const { phone, password } = this.user;
+      await this.$store.dispatch('login', { phone, password });
+      // 登录成功
+      if (this.isAutoLogin) {
+        localStorage.setItem('token', this.token);
+        localStorage.setItem('name', this.name);
+      }
+      this.$router.push('/');
+    },
+    //去注册页面
+    toRegister() {
       this.$router.push('/register');
     },
+  },
+  components: {
+    ValidationProvider,
   },
 };
 </script>
@@ -110,6 +169,9 @@ export default {
         border: none;
         outline: none;
         border: solid 1px solid;
+      }
+      p {
+        padding: 10px 0;
       }
     }
     .login-pasword {

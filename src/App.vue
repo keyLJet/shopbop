@@ -1,16 +1,16 @@
 <template>
   <div>
-    <tetsHome />
+    <Header v-show="!$route.meta.isHeaderHide" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import tetsHome from './views/testHome';
+import Header from './components/Header';
 export default {
   name: 'App',
   components: {
-    tetsHome,
+    Header,
   },
 };
 </script>

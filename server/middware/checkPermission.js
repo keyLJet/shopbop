@@ -4,18 +4,21 @@ module.exports = async (req, res, next) => {
   const { token } = req.headers
   if (!token) {
     return res.json({
-      status: 403,
+      code: 403,
       message: '你没有权限'
     })
   }
   // 校验token是否过期
-  try {
-    await verify(token)
-    next()
-  } catch (error) {
-    return res.json({
-      status: 403,
-      message: 'token已过期'
-    })
-  }
+  
+    try {
+      await verify(token)
+      next()
+    } catch (error) {
+      return res.json({
+        code: 403,
+        message: 'token已过期'
+      })
+    }
+  
+  
 }

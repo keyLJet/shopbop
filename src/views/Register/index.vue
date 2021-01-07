@@ -134,8 +134,8 @@ export default {
     };
   },
   methods: {
-    submit() {
-      let { isAgree, password, rePassword } = this.user;
+    async submit() {
+      let { isAgree, password, rePassword, phone } = this.user;
       if (!isAgree) {
         this.$message.error('若您创建账户表示您同意我们的隐私声明和使用条件');
         return;
@@ -145,6 +145,8 @@ export default {
         this.$message.error('您输入的两次密码不一样');
         return;
       }
+      //发送请求
+      await this.$store.dispatch('register', { phone, password });
       this.$router.push('/login');
     },
   },

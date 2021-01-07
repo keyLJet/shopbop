@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true })) // 解析请求体数据
 
 app.use(registerRouter) // 注册路由
 app.use(capcheRouter)
-app.use(checkPermissionMiddware) // 检查token是否合法的中间件
+// app.use(checkPermissionMiddware) // 检查token是否合法的中间件
 app.use(loginRouter) // 登录路由
 
 app.listen(SERVERCONFIG.port, SERVERCONFIG.host, err => {
