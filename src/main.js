@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+=======
+import Vue from 'vue';
+import App from './App.vue';
+import './mock/data';
+import store from "./store";
+>>>>>>> wangyalou
 
 // 引入公共样式
 import './style/reset.css'

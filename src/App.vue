@@ -4,6 +4,7 @@
     <router-view class="countent"></router-view>
     <Footer />
   </div>
+  
 </template>
 
 <script>

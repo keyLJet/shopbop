@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
   configureWebpack: {
@@ -10,18 +10,18 @@ module.exports = {
         "@utils": path.resolve(__dirname, "src/utils"),
         "@api": path.resolve(__dirname, "src/api"),
         "@components": path.resolve(__dirname, "src/components"),
-      }
-    }
+      },
+    },
   },
   devServer: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
+      "/api": {
+        target: "http://localhost:3000",
         changeOrigin: true,
         pathRewrite: {
-          "^/api": ""
-        }
-      }
-    }
-  }
-}
+          "^/api": "",
+        },
+      },
+    },
+  },
+};
