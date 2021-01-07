@@ -15,7 +15,9 @@
     "title": "Chealsea 靴子",
     "price": "$462.00",
     "color": "白无色",
-    "size": "37"
+    "size": "37",
+    "soldOut": true
+
   },
   {
     "id": "3",

@@ -112,31 +112,21 @@
                 >
                 </el-option>
               </el-select>
-              <!-- <select name="designer" id="designer" class="quickFindDropDown">
-                <option value="">设计师</option>
-                <option value="">Tory Burch</option>
-              </select>
-              <select name="size" id="size" class="quickFindDropDown">
-                <option value="">尺寸</option>
-                <option value="">M</option>
-              </select>
-              <select name="color" id="color" class="quickFindDropDown">
-                <option value="">颜色</option>
-                <option value="">黑色</option>
-              </select> -->
               <span>
-                <a href="#" class="clearAll" @click="clear">清除所有</a>
+                <a href="javascript:void(0);" class="clearAll" @click="clear"
+                  >清除所有</a
+                >
               </span>
             </div>
             <div class="sort">
               <span>排序</span>
               <el-select
                 class="select"
-                v-model="sortTypes"
-                multiple
+                v-model="sortType"
                 placeholder="上架时间"
                 size="mini"
                 style="margin-left: 6px"
+                @change="sort"
               >
                 <el-option
                   v-for="item in options"
@@ -153,13 +143,13 @@
               </select> -->
             </div>
           </div>
-          <div class="heartRemove">
+          <a href="javascript:void(0);" class="heartRemove" @click="removeAll">
             删除所有
             <img
               src="https://images-cn.ssl-images-amazon.cn/images/G/01/Shopbop/p/pcs/shopbop/media/images/lnf3/hearts/rebrand_heart_small_filled_1-0.png"
               alt="heart"
             />
-          </div>
+          </a>
           <div class="pagination-container-top"></div>
           <div class="product-list">
             <ul class="product-container">
@@ -167,17 +157,8 @@
                 <img class="productImg" :src="item.imgUrl" alt="" />
                 <div class="brand">{{ item.brand }}</div>
                 <div class="title">{{ item.tittle }}</div>
-                <div class="price">{{ item.price }}</div>
+                <div class="price">US$ {{ item.price }}</div>
               </li>
-              <!-- <li class="product-item">
-                <img
-                  src="https://images-cn.ssl-images-amazon.cn/images/G/01/Shopbop/p/prod/products/toryb/toryb4778058187/toryb4778058187_q1_2-0._SH20_QL90_UY365_.jpg"
-                  alt=""
-                />
-                <div class="brand">Tory Burch</div>
-                <div class="brand">双链式帆布手提袋</div>
-                <div class="price">US$258.00</div>
-              </li> -->
             </ul>
           </div>
           <div class="pagination-container-bottom"></div>
@@ -204,13 +185,13 @@ export default {
         },
         {
           value: "priceDown",
-          label: "价格：从高到高",
+          label: "价格：从高到低",
         },
       ],
       designers: [],
       sizes: [],
       colors: [],
-      sortTypes: [],
+      sortType: "",
     };
   },
   methods: {
@@ -230,7 +211,6 @@ export default {
         this.showList = this.hearts.filter(
           (item) => sizes.indexOf(item.size) !== -1
         );
-        // console.log(this.showList);
       } else {
         this.showList = this.hearts;
       }
@@ -240,13 +220,33 @@ export default {
         this.showList = this.hearts.filter(
           (item) => colors.indexOf(item.color) !== -1
         );
-        // console.log(this.showList);
       } else {
         this.showList = this.hearts;
       }
     },
-    clear(){
-      console.log("111")
+    clear() {
+      console.log("reset");
+      this.designers = [];
+      this.sizes = [];
+      this.colors = [];
+      this.changeDesigner(this.designers);
+    },
+    sort(sortType){
+      console.log(sortType)
+      if(sortType == "priceUp"){
+        this.showList.sort((a,b)=>{
+          return parseInt(a.price) - parseInt(b.price)
+        })
+      }
+      if(sortType == "priceDown"){
+        this.showList.sort((a,b)=>{
+          return parseInt(b.price) - parseInt(a.price)
+        })
+      }
+    },
+    removeAll(){
+      this.showList = []
+      //发送请求至服务器，删除收藏商品数据
     },
   },
   async mounted() {
@@ -336,12 +336,16 @@ html body {
             text-decoration: underline;
           }
         }
-        // .sort {
-        //   //  width: 102px;
-        // }
+        .sort {
+          .select {
+            width: 100px;
+          }
+        }
       }
       .heartRemove {
+        display: block;
         text-align: right;
+        text-decoration: underline;
         line-height: 20px;
         margin: 0 4px 6px 0;
       }

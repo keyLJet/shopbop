@@ -39,28 +39,28 @@
       <div class="right-content">
         <div class="content-head">
           <div class="left">2件中的2件</div>
-          <button class="right">移除已售迄产品</button>
+          <button class="right" @click="delSoldOut">移除已售迄产品</button>
         </div>
         <ul class="wishList">
-          <li class="wishListItem" v-for="item in wishList" :key="item.id">
+          <li class="wishListItem" v-for="item in showWishList" :key="item.id">
             <a href="#">
-              <img class="productImg"
-                :src="item.imgUrl"
-                alt=""
-              />
+              <img class="productImg" :src="item.imgUrl" alt="" />
             </a>
             <div class="descContainer">
               <div class="descTop">
-                <div class="brand"><a href="#">{{item.brand}}</a></div>
-                <div class="title">
-                  <a href="#">{{item.tittle}}</a>
+                <div class="brand">
+                  <a href="#">{{ item.brand }}</a>
                 </div>
-                <div class="price">{{item.price}}</div>
+                <div class="title">
+                  <a href="#">{{ item.tittle }}</a>
+                </div>
+                <div class="price">{{ item.price }}</div>
               </div>
               <div class="descBottom">
-                <div>颜色:{{item.color}}</div>
+                <div v-if="item.soldOut" class="soldOut">该商品已售罄！</div>
+                <div>颜色:{{ item.color }}</div>
                 <div class="dbContainer">
-                  <div class="size">尺码:{{item.size}}</div>
+                  <div class="size">尺码:{{ item.size }}</div>
                   <div class="addCart">
                     <a href="#" class="changeColor">更换颜色/尺寸</a>
                     <button class="add">加入购物车</button>
@@ -72,6 +72,7 @@
               class="removeIcon"
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTUuMjkzIDUuNTQ1di45MUw0LjgzOCA2bC40NTUtLjQ1NXpNNC44MzggNkwuMjQxIDEuNDAyQS44MjEuODIxIDAgMTExLjQwMi4yNDFMNiA0LjgzOCAxMC41OTguMjQxYS44MjEuODIxIDAgMTExLjE2MSAxLjE2MUw3LjE2MiA2bDQuNTk3IDQuNTk4YS44MjEuODIxIDAgMTEtMS4xNjEgMS4xNjFMNiA3LjE2MmwtNC41OTggNC41OTdhLjgyLjgyIDAgMTEtMS4xNjEtMS4xNjFMNC44MzggNnptLjcwNy43MDdoLjkxTDYgNy4xNjJsLS40NTUtLjQ1NXptMS4xNjItLjI1MnYtLjkxTDcuMTYyIDZsLS40NTUuNDU1em0tLjI1Mi0xLjE2MmgtLjkxTDYgNC44MzhsLjQ1NS40NTV6IiBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L3N2Zz4="
               alt="removeIcon"
+              @click="removeItem"
             />
           </li>
         </ul>
@@ -82,18 +83,27 @@
 </template>
 
 <script>
-import {reqGetWishList} from '../../api/heartsNwishList'
+import { reqGetWishList } from "../../api/heartsNwishList";
 
 export default {
   name: "WishList",
-  data(){
+  data() {
     return {
-      wishList:[],
-    }
+      wishList: [],
+      showWishList: [],
+    };
   },
-  async mounted(){
-    let wishList = await reqGetWishList()
-    this.wishList = wishList
+  methods: {
+    delSoldOut() {
+      this.showWishList = this.showWishList.filter((item) => !item.soldOut);
+      console.log(this.showWishList);
+    },
+    removeItem() {},
+  },
+  async mounted() {
+    let wishList = await reqGetWishList();
+    this.wishList = wishList;
+    this.showWishList = wishList;
   },
 };
 </script>
@@ -138,7 +148,7 @@ html body {
           height: 26px;
           line-height: 25px;
         }
-        .help{
+        .help {
           padding-left: 10px;
         }
       }
@@ -175,7 +185,7 @@ html body {
           position: relative;
           display: flex;
           margin-bottom: 20px;
-          .productImg{
+          .productImg {
             width: 92px;
             height: 163px;
           }
@@ -213,6 +223,10 @@ html body {
             }
             .descBottom {
               width: 100%;
+              .soldOut {
+                color: red;
+                text-decoration: underline;
+              }
               .dbContainer {
                 width: 100%;
                 display: flex;
