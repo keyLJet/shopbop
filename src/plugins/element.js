@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Menu, MenuItem, Submenu, Pagination, Dropdown,DropdownMenu,DropdownItem } from 'element-ui'
+import { Button, Menu, MenuItem, Submenu, Pagination, Dropdown,DropdownMenu,DropdownItem,Breadcrumb,Icon } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Menu)
@@ -10,4 +10,5 @@ Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 
-// Vue.prototype.$message = Message
+Vue.use(Breadcrumb);
+Vue.use(Icon);

@@ -17,7 +17,11 @@ import './plugins/element.js'
 // 引入包含所有接口请求函数模块的API对象
 import * as API from "@/api";
 
-Vue.config.productionTip = false
+import './plugins/element';
+
+import "swiper/swiper-bundle.min.css";
+
+Vue.config.productionTip = false;
 
 Vue.prototype.$API = API;
 Vue.prototype.$BASE_API = process.env.VUE_APP_BASE_API;
