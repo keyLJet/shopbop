@@ -28,38 +28,19 @@
       <a href="#"><img src="../../../assets/images/8.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/9.jpg" alt="" /></a>
       <a href="#"
-        ><video
-          autoplay
-          muted
-          loop
-          type="video/mp4"
-          src="../../../assets/viedo/1.mp4"
-        ></video
-      ></a>
+        ><img
+          src="../../../assets/images/44.jpg"
+          alt=""
+          style="width: 470px; height: 590px"
+      /></a>
       <a href="#"><img src="../../../assets/images/10.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/11.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/12.jpg" alt="" /></a>
-      <a href="#"
-        ><video
-          autoplay
-          muted
-          loop
-          type="video/mp4"
-          src="../../../assets/viedo/2.mp4"
-        ></video
-      ></a>
       <a href="#"><img src="../../../assets/images/13.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/14.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/15.jpg" alt="" /></a>
-      <a href="#"
-        ><video
-          autoplay
-          muted
-          loop
-          type="video/mp4"
-          src="../../../assets/viedo/3.mp4"
-        ></video
-      ></a>
+      <a href="#"><img src="../../../assets/images/45.jpg" alt=""  style="width:526px; height: 674px" /></a>
+
       <a href="#"><img src="../../../assets/images/16.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/17.jpg" alt="" /></a>
       <a href="#"><img src="../../../assets/images/18.jpg" alt="" /></a>

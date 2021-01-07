@@ -13,7 +13,7 @@
             <div>P.E NATION</div>
             <span>$90.00</span>
           </div>
-          <div class="swiper_item">
+          <!-- <div class="swiper_item">
             <img src="../../assets/images/26.jpg" alt="" />
             <div>P.E NATION</div>
             <span>$90.00</span>
@@ -32,7 +32,7 @@
             <img src="../../assets/images/26.jpg" alt="" />
             <div>P.E NATION</div>
             <span>$90.00</span>
-          </div>
+          </div> -->
         </div>
         <div class="swiper-slide">
           <div class="swiper_item">
