@@ -57,17 +57,21 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: "Login",
   methods: {
     //去注册按钮
     submit() {
-      this.$router.push('/register');
+      this.$router.push("/register");
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
+html body {
+  background-color:rgba(0,0,0,.5);
+  height: 100%;
+}
 .login-container {
   width: 100%;
   height: 100%;
@@ -88,7 +92,7 @@ export default {
     padding-top: 40px;
     .email {
       font-weight: bold;
-      font-family: 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
+      font-family: "Hiragino Sans GB", "Microsoft Yahei", Arial, sans-serif;
       display: block;
       margin-top: 10px;
       font-size: 13px;
@@ -213,7 +217,7 @@ export default {
     }
     .footer-a::before {
       display: block;
-      content: '';
+      content: "";
       padding: 20px;
       border-top: 1px solid #76767657;
     }

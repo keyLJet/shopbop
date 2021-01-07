@@ -157,6 +157,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+html body {
+  background-color:rgba(0,0,0,.5);
+  height: 100%;
+}
 .register-banner {
   width: 100%;
   height: 100%;

@@ -5,7 +5,7 @@
       <div class="header">
         <!-- 左 -->
         <div class="header_left">
-          <a href="#">选购男士单品</a> |
+          <router-link to="/">选购男士单品</router-link> |
           <div>
             <span class="iconfont icon-weibiaoti-3"></span>
             <span>CN<span class="iconfont icon-xia"></span></span>
@@ -28,7 +28,7 @@
           >
             <el-submenu index="1">
               <span slot="title"
-                >登录/注册<span class="iconfont icon-xia"></span
+                ><router-link to="/login">登录/注册</router-link><span class="iconfont icon-xia"></span
               ></span>
               <div class="tologin">
                 <ul>
@@ -36,15 +36,15 @@
                   <li><a href="">订单</a></li>
                   <li><a href="">我的会员</a></li>
                   <li><a href="">我的评论</a></li>
-                  <li><a href="">收藏夹</a></li>
-                  <li><a href="">我的心愿单</a></li>
+                  <li><router-link to="/hearts">收藏夹</router-link></li>
+                  <li><router-link to="/wishlist">我的心愿单</router-link></li>
                   <li><a href="">我的品牌</a></li>
                 </ul>
               </div>
             </el-submenu>
           </el-menu>
-          <span class="iconfont icon-aixin"></span>
-          <span class="iconfont icon-35gouwudai"></span>0
+          <router-link to="/hearts" class="iconfont icon-aixin"></router-link>
+          <router-link to="/shoppingcart" class="iconfont icon-35gouwudai"></router-link>0
         </div>
       </div>
     </div>
@@ -52,12 +52,12 @@
     <!-- LOGO -->
     <div :class="flag ? 'fixedNav' : ''">
       <div class="logo">
-        <a href="">
+        <router-link to="/">
           <img
             :class="logo ? '' : 'active'"
             src="https://images-cn.ssl-images-amazon.cn/images/G/01/Shopbop/p/pcs/shopbop/media/3/images/logos/rebrand_shopbop_logo_2x_1-3.png"
           />
-        </a>
+        </router-link>
       </div>
       <div class="topNav">
         <el-menu class="el-menu-demo" mode="horizontal">

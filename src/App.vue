@@ -1,10 +1,13 @@
 <template>
   <div id="app" @mousewheel="mouseWheel">
-    <Header :flied="flied" :setBigLogo="setBigLogo"/>
+    <Header
+      v-if="!$route.meta.isHeaderFooterHide"
+      :flied="flied"
+      :setBigLogo="setBigLogo"
+    />
     <router-view class="countent"></router-view>
-    <Footer />
+    <Footer v-if="!$route.meta.isHeaderFooterHide" />
   </div>
-  
 </template>
 
 <script>

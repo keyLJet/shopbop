@@ -67,10 +67,16 @@ const router = new VueRouter({
     {
       path: "/login",
       component: Login,
+      meta: {
+        isHeaderFooterHide: true,
+      },
     },
     {
       path: "/register",
       component: Register,
+      meta: {
+        isHeaderFooterHide: true,
+      },
     },
     {
       path: "/productPage",
