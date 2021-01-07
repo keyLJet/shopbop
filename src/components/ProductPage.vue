@@ -204,6 +204,29 @@
                 </span>
               </div>
             </section>
+            <section id="size_details_wrapper" class=" details_wrapper">
+              <div
+                class="product_details_text"
+                :id="showMoreText ? 'expanded' : ''"
+                ref="showMore"
+              >
+                <div class="long_description">
+                  <ul class="bulleted_attributes">
+                    <li>背面隐形拉链</li>
+                    <li>表层: 60% 三醋酸纤维/40% 聚酯纤维</li>
+                    <li>饰边: 100% 真丝</li>
+                    <li>衬里: 100% 聚酯纤维</li>
+                    <li>干洗</li>
+                    <li>中国进口</li>
+                  </ul>
+                  <div class="product_code">
+                    风格编号
+                    <span>TORYB48491</span>
+                  </div>
+                </div>
+                <span class="collapsed_fade"></span>
+              </div>
+            </section>
           </div>
         </div>
       </div>
