@@ -8,6 +8,9 @@
 import Content from "./Content/Content";
 export default {
   name: "Home",
+  data() {
+    return {};
+  },
   components: {
     Content,
   },
@@ -15,4 +18,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 </style>

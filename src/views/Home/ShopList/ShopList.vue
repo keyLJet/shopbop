@@ -18,8 +18,10 @@
         </ul>
       </div>
       <!-- 商品图片列表 -->
-      <div class="shopList">
-        <a href=""><img src="../../../assets/images/39.jpg" alt="" /></a>
+      <div class="shopImgList">
+        <!-- <a href=""><img src="../../../assets/images/39.jpg" alt="" /></a> -->
+        <Swiper />
+
         <!-- 筛选 -->
         <div class="screen">
           <div class="screen_left">
@@ -34,121 +36,118 @@
           <div class="screen_right">
             <ul>
               <li>排序</li>
-              <li>上架时间</li>
+              <el-dropdown
+                placement="bottom-end"
+                trigger="click"
+                @command="handleCommand"
+              >
+                <span class="el-dropdown-link">
+                  上架时间<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item command="a">价格</el-dropdown-item>
+                  <el-dropdown-item command="b">上架时间</el-dropdown-item>
+                  <el-dropdown-item command="c">主编推荐</el-dropdown-item>
+                  <el-dropdown-item command="d"
+                    >设计师独家精品</el-dropdown-item
+                  >
+                  <el-dropdown-item command="e">用户评分</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             </ul>
           </div>
         </div>
         <!-- 分页器 -->
-        <div class="pagination">
-          <div class="pagination_left">
-            <div>
-              <span>959商品</span>
-            </div>
-            <div>
-              <span>查看</span>
-              <span>40</span>
-              <span>100</span>
-            </div>
-          </div>
-          <div class="pagination_right">
-            <el-pagination small layout="prev, pager, next" :total="50">
-            </el-pagination>
-          </div>
-        </div>
-        <!-- 图片列表 -->
+        <Pagination
+          :updataShopList="updataShopList"
+          :goodsTotal="shopList.length"
+          :showSomeList="showSomeList"
+        />
+        <!-- 商品列表 -->
         <div class="imgList">
           <ul>
-            <li>
-              <a href="#"><img src="../../../assets/images/40.jpg" alt="" /></a>
+            <li v-for="good in goodsList" :key="good.id">
+              <a href="#"><img :src="good.primaryPicUrl" alt="" /></a>
               <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/41.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/42.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/43.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/40.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/41.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/42.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
-              </div>
-            </li>
-            <li>
-              <a href="#"><img src="../../../assets/images/43.jpg" alt="" /></a>
-              <div class="shopDetail">
-                <div><a href="#">The Vampires Wife</a></div>
-                <div><a href="#">罩衫式迷你连衣裙</a></div>
-                <div><a href="#">US$1,695.00</a></div>
+                <div>
+                  <a href="#">{{ good.name }}</a>
+                </div>
+                <div>
+                  <a href="#">{{ good.simpleDesc }}</a>
+                </div>
+                <div>
+                  <a href="#">${{ good.retailPrice }}</a>
+                </div>
               </div>
             </li>
           </ul>
         </div>
         <!-- 底部分页器 -->
-        <div class="pagination">
-          <div class="pagination_left">
-            <div>
-              <span>959商品</span>
-            </div>
-            <div>
-              <span>查看</span>
-              <span>40</span>
-              <span>100</span>
-            </div>
-          </div>
-          <div class="pagination_right">
-            <el-pagination small layout="prev, pager, next" :total="50">
-            </el-pagination>
-          </div>
-        </div>
+        <Pagination :updataShopList="updataShopList" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import Pagination from "@components/Pagination";
+import Swiper from "@components/Swiper";
+
 export default {
   name: "ShopList",
+  data() {
+    return {
+      goodsList: [], //商品列表
+      timeSort: false,
+    };
+  },
+  computed: {
+    ...mapGetters(["shopList"]),
+  },
+  methods: {
+    ...mapActions(["getShopList"]),
+
+    updataShopList() {
+      // this.getShopList();
+      console.log("ShopList组件触发了");
+    },
+
+    // 价格排序
+    handleCommand(command, event) {
+      let { goodsList, timeSort } = this;
+      console.log(event);
+
+      if (command === "a") {
+        //a = 时间排序
+        const result = goodsList.sort((a, b) => {
+          return timeSort
+            ? b.retailPrice - a.retailPrice
+            : a.retailPrice - b.retailPrice;
+        });
+        this.timeSort = !timeSort;
+        goodsList = result;
+      }
+    },
+
+    // 处理页面数据展示条数
+    showSomeList(num) {
+      let result = this.goodsList.slice(0, num);
+      this.goodsList = result;
+    },
+  },
+  watch: {
+    shopList() {
+      this.goodsList = this.shopList;
+    },
+  },
+  mounted() {
+    this.getShopList();
+  },
+  components: {
+    Pagination,
+    Swiper,
+  },
 };
 </script>
 
@@ -179,7 +178,7 @@ export default {
       padding-left: 6px;
     }
   }
-  .shopList {
+  .shopImgList {
     .screen {
       height: 29px;
       line-height: 29px;
@@ -199,24 +198,6 @@ export default {
         }
       }
     }
-    .pagination {
-      height: 30px;
-      line-height: 30px;
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-between;
-      .pagination_left {
-        display: flex;
-        align-items: center;
-        div:nth-child(1) {
-          padding-right: 10px;
-          border-right: 1px solid;
-        }
-        span {
-          margin-left: 10px;
-        }
-      }
-    }
     .imgList {
       margin-top: 20px;
       ul {
@@ -229,6 +210,10 @@ export default {
           margin: 0 0 18px;
           padding: 0 6px 18px;
           box-sizing: border-box;
+          img {
+            width: 206px;
+            height: 365px;
+          }
         }
       }
       .shopDetail {
