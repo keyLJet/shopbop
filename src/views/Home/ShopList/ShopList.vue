@@ -19,9 +19,7 @@
       </div>
       <!-- 商品图片列表 -->
       <div class="shopImgList">
-        <!-- <a href=""><img src="../../../assets/images/39.jpg" alt="" /></a> -->
         <Swiper />
-
         <!-- 筛选 -->
         <div class="screen">
           <div class="screen_left">
@@ -60,7 +58,7 @@
         <!-- 分页器 -->
         <Pagination
           :updataShopList="updataShopList"
-          :goodsTotal="shopList.length"
+          :goodsTotal="goodsList.length"
           :showSomeList="showSomeList"
         />
         <!-- 商品列表 -->
@@ -108,15 +106,19 @@ export default {
   methods: {
     ...mapActions(["getShopList"]),
 
-    updataShopList() {
-      // this.getShopList();
-      console.log("ShopList组件触发了");
+    // 分页器跳转
+    updataShopList({ pageSize, currentCage }) {
+      let { shopList } = this;
+      let result = shopList.slice(
+        (currentCage - 1) * pageSize,
+        pageSize * currentCage
+      );
+      this.goodsList = result;
     },
 
     // 价格排序
-    handleCommand(command, event) {
+    handleCommand(command) {
       let { goodsList, timeSort } = this;
-      console.log(event);
 
       if (command === "a") {
         //a = 时间排序
@@ -132,6 +134,8 @@ export default {
 
     // 处理页面数据展示条数
     showSomeList(num) {
+      let { shopList } = this;
+      this.goodsList = shopList;
       let result = this.goodsList.slice(0, num);
       this.goodsList = result;
     },
@@ -188,7 +192,14 @@ export default {
       .screen_left ul {
         display: flex;
         li {
-          margin-right: 50px;
+          margin-right: 30px;
+        }
+        li:first-child {
+          font-weight: 1000;
+        }
+        li:last-child {
+          text-decoration: underline;
+          cursor: pointer;
         }
       }
       .screen_right ul {

@@ -1,98 +1,64 @@
 <template>
-  <div>
+  <div v-if="bannersList">
     <header class="swiperTitle">
       <nav><a href="#">推荐单品</a></nav>
     </header>
     <div class="swiper-container" @click="goToProduct">
       <!-- Additional required wrapper -->
+    <div class="swiper-container">
+      <!-- 轮播图内容 -->
       <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
+        <!-- 轮播图每一面内容-->
+        <div
+          class="swiper-slide"
+          v-for="(list, index) in bannersList[0]"
+          :key="index"
+        >
+          <div class="swiper_item" v-for="li in list" :key="li.id">
+            <img :src="li.primaryPicUrl" alt="" />
+            <div>{{ li.name }}</div>
+            <span>${{ li.counterPrice }}</span>
           </div>
         </div>
-        <div class="swiper-slide">
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
+        <div
+          class="swiper-slide"
+          v-for="(list, index) in bannersList[1]"
+          :key="index"
+        >
+          <div class="swiper_item" v-for="li in list" :key="li.id">
+            <img :src="li.primaryPicUrl" alt="" />
+            <div>{{ li.name }}</div>
+            <span>${{ li.counterPrice }}</span>
           </div>
         </div>
-        <div class="swiper-slide">
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
+        <div
+          class="swiper-slide"
+          v-for="(list, index) in bannersList[2]"
+          :key="index"
+        >
+          <div class="swiper_item" v-for="li in list" :key="li.id">
+            <img :src="li.primaryPicUrl" alt="" />
+            <div>{{ li.name }}</div>
+            <span>${{ li.counterPrice }}</span>
           </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
-          </div>
-          <div class="swiper_item">
-            <img src="../../assets/images/26.jpg" alt="" />
-            <div>P.E NATION</div>
-            <span>$90.00</span>
+        </div>
+        <div
+          class="swiper-slide"
+          v-for="(list, index) in bannersList[3]"
+          :key="index"
+        >
+          <div class="swiper_item" v-for="li in list" :key="li.id">
+            <img :src="li.primaryPicUrl" alt="" />
+            <div>{{ li.name }}</div>
+            <span>${{ li.counterPrice }}</span>
           </div>
         </div>
       </div>
-      <!-- If we need pagination -->
+
+      <!-- 轮播图小圆点 -->
       <div class="swiper-pagination"></div>
 
-      <!-- If we need navigation buttons -->
+      <!--轮播图前后按钮 -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
@@ -114,13 +80,8 @@ export default {
   },
   methods: {
     ...mapActions(["getBanners"]),
-    goToProduct(){
-      this.$router.push("/productpage")
-    },
-  },
-  mounted() {
-    this.getBanners();
-    this.$nextTick(() => {
+    // 复用轮播图方法
+    initSwiper() {
       new Swiper(".swiper-container", {
         // 循环模式选项
         loop: true,
@@ -142,7 +103,22 @@ export default {
           prevEl: ".swiper-button-prev",
         },
       });
-    });
+    },
+    goToProduct() {
+      this.$router.push("/pageproduct");
+    },
+  },
+  watch: {
+    bannersList() {
+      this.$nextTick(() => {
+        this.initSwiper();
+      });
+    },
+  },
+  mounted() {
+    this.getBanners();
+
+    this.initSwiper();
   },
 };
 </script>
