@@ -3,7 +3,7 @@
     <header class="swiperTitle">
       <nav><a href="#">推荐单品</a></nav>
     </header>
-    <div class="swiper-container">
+    <div class="swiper-container" @click="goToProduct">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
@@ -114,6 +114,9 @@ export default {
   },
   methods: {
     ...mapActions(["getBanners"]),
+    goToProduct(){
+      this.$router.push("/productpage")
+    },
   },
   mounted() {
     this.getBanners();
