@@ -23,13 +23,13 @@
             <a href="#">我的品牌</a>
           </li>
           <li class="leftNavCategoryLi">
-            <a href="#">收藏夹</a>
+            <router-link to="/hearts">收藏夹</router-link>
           </li>
           <li class="leftNavCategoryLi">
             <a href="#">我的评论</a>
           </li>
           <li class="leftNavCategoryLi">
-            <a href="#">我的心愿单</a>
+            <router-link to="/wishlist">我的心愿单</router-link>
           </li>
           <li class="leftNavCategoryLi help">
             <a href="#">帮助</a>
@@ -38,11 +38,17 @@
       </div>
       <div class="right-content">
         <div class="content-head">
-          <div class="left">2件中的2件</div>
+          <div class="left">
+            {{ showWishList.length }}件中的{{ showWishList.length }}件
+          </div>
           <button class="right" @click="delSoldOut">移除已售迄产品</button>
         </div>
         <ul class="wishList">
-          <li class="wishListItem" v-for="item in showWishList" :key="item.id">
+          <li
+            class="wishListItem"
+            v-for="(item, index) in showWishList"
+            :key="item.id"
+          >
             <a href="#">
               <img class="productImg" :src="item.imgUrl" alt="" />
             </a>
@@ -63,7 +69,7 @@
                   <div class="size">尺码:{{ item.size }}</div>
                   <div class="addCart">
                     <a href="#" class="changeColor">更换颜色/尺寸</a>
-                    <button class="add">加入购物车</button>
+                    <button class="add" @click="addCart">加入购物车</button>
                   </div>
                 </div>
               </div>
@@ -72,7 +78,7 @@
               class="removeIcon"
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTUuMjkzIDUuNTQ1di45MUw0LjgzOCA2bC40NTUtLjQ1NXpNNC44MzggNkwuMjQxIDEuNDAyQS44MjEuODIxIDAgMTExLjQwMi4yNDFMNiA0LjgzOCAxMC41OTguMjQxYS44MjEuODIxIDAgMTExLjE2MSAxLjE2MUw3LjE2MiA2bDQuNTk3IDQuNTk4YS44MjEuODIxIDAgMTEtMS4xNjEgMS4xNjFMNiA3LjE2MmwtNC41OTggNC41OTdhLjgyLjgyIDAgMTEtMS4xNjEtMS4xNjFMNC44MzggNnptLjcwNy43MDdoLjkxTDYgNy4xNjJsLS40NTUtLjQ1NXptMS4xNjItLjI1MnYtLjkxTDcuMTYyIDZsLS40NTUuNDU1em0tLjI1Mi0xLjE2MmgtLjkxTDYgNC44MzhsLjQ1NS40NTV6IiBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L3N2Zz4="
               alt="removeIcon"
-              @click="removeItem"
+              @click="removeItem(index)"
             />
           </li>
         </ul>
@@ -96,9 +102,17 @@ export default {
   methods: {
     delSoldOut() {
       this.showWishList = this.showWishList.filter((item) => !item.soldOut);
-      console.log(this.showWishList);
+      // console.log(this.showWishList);
     },
-    removeItem() {},
+    removeItem(index) {
+      // console.log(index)
+      this.showWishList.splice(index, 1);
+    },
+    async addCart(index) {
+      // 发送请求至后台，同时手动更新前端数据
+      //并从当前页面中移除出列表
+      this.showWishList.splice(index, 1);
+    },
   },
   async mounted() {
     let wishList = await reqGetWishList();

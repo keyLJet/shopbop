@@ -53,7 +53,7 @@
               <a href="#">我的评论</a>
             </li>
             <li class="leftNavCategoryLi">
-              <a href="#">我的心愿单</a>
+              <router-link to="/wishlist">我的心愿单</router-link>
             </li>
           </ul>
         </div>
