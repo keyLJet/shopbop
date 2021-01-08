@@ -10,7 +10,7 @@
         <ul>
           <li><a href="">所有商品</a></li>
           <li><a href="">今日商品</a></li>
-          <li @click="a">服装</li>
+          <li><a href="">服装</a></li>
           <li><a href="">鞋履</a></li>
           <li><a href="">包装</a></li>
           <li><a href="">首饰和配饰</a></li>
@@ -19,7 +19,6 @@
       </div>
       <!-- 商品图片列表 -->
       <div class="shopImgList">
-        <!-- <a href=""><img src="../../../assets/images/39.jpg" alt="" /></a> -->
         <Swiper />
         <!-- 筛选 -->
         <div class="screen">
@@ -105,11 +104,10 @@ export default {
     ...mapGetters(["shopList"]),
   },
   methods: {
-    ...mapActions(["getShopList", "getCategoryList"]),
+    ...mapActions(["getShopList"]),
 
     // 分页器跳转
     updataShopList({ pageSize, currentCage }) {
-      // this.getShopList();
       let { shopList } = this;
       let result = shopList.slice(
         (currentCage - 1) * pageSize,
@@ -140,10 +138,6 @@ export default {
       this.goodsList = shopList;
       let result = this.goodsList.slice(0, num);
       this.goodsList = result;
-    },
-
-    a() {
-      console.log("a");
     },
   },
   watch: {

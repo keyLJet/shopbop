@@ -4,28 +4,6 @@ export default {
 
   state: {
     banners: [],
-    // banners: {
-    //   banners1:[],
-    //   banners2:[],
-    //   banners3:[],
-    //   banners4:[]
-    // },
-
-
-    // bannersArr: [
-    //   {
-    //     banners1: []
-    //   },
-    //   {
-    //     banners2: []
-    //   },
-    //   {
-    //     banners3: []
-    //   },
-    //   {
-    //     banners4: []
-    //   },
-    // ]
   },
 
   actions: {

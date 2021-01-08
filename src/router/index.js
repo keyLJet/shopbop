@@ -9,7 +9,7 @@ const ShopList = () => import(/* webpackChunkName: "ShopList-foo" */ '../views/H
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-  routes:[
+  routes: [
     {
       path: '/',
       component: Home
@@ -17,7 +17,8 @@ const router = new VueRouter({
     {
       path: '/shoplist',
       component: ShopList
-    }
+    },
+
   ]
 })
 
