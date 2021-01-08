@@ -62,7 +62,8 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
-  </div>
+    </div>
+  </div>  
 </template>
 
 <script>
