@@ -97,10 +97,10 @@
             </div>
           </div>
 
-          <div class="image_bottom">
+          <a class="image_bottom" href="#similarities">
             选购搭配服饰
             <div class="arrow down"></div>
-          </div>
+          </a>
         </div>
         <!-- 右边商品信息展示区 -->
         <div class="right_column">
@@ -125,8 +125,18 @@
             <div class="goodsSize">
               <div>尺寸</div>
               <div class="sizeList">
-                <div class="sizeBox">4</div>
-                <div class="sizeBox">8</div>
+                <div
+                  :class="{ sizeBox: true, active: size === 1 }"
+                  @click="selectSize(1)"
+                >
+                  4
+                </div>
+                <div
+                  :class="{ sizeBox: true, active: size === 2 }"
+                  @click="selectSize(2)"
+                >
+                  8
+                </div>
               </div>
             </div>
             <div class="sizeInfo">
@@ -150,7 +160,22 @@
           </div>
           <!-- 购买提示 -->
           <div class="shoppingCountDown">
-            <a href="">免费国际快递 + 轻松退货</a>
+            <el-popover placement="top" width="300" >
+              <div class="popover_content">
+                <div class="shippingInfoText">
+                  <b class="upper">免费国际快递</b><br />
+                  我们提供全球免费快递服务。&nbsp;
+                  <a class="original_style_link" href=""> 了解详情</a>
+                </div>
+                <div class="returnsInfoText">
+                  <b class="upper">轻松退货</b>
+                  <br />
+                  <span class="upper">国际订单在线申请打印DHL退货标签。美国国内订单15天内享免费退货。&nbsp;</span>
+                  <a class="original_style_link" href=""> 退货政策</a>
+                </div>
+              </div>
+              <a slot="reference" class="tip">免费国际快递 + 轻松退货</a>
+            </el-popover>
           </div>
           <!-- 商品介绍 -->
           <div class="productDetils">
@@ -167,7 +192,10 @@
                 >尺寸及版型</label
               >
             </header>
-            <section class="product_details_wrapper details_wrapper">
+            <section
+              id="product_details_wrapper"
+              :class="{ details_wrapper: true, active: showProductDetails }"
+            >
               <div
                 class="product_details_text"
                 :id="showMoreText ? 'expanded' : ''"
@@ -204,27 +232,46 @@
                 </span>
               </div>
             </section>
-            <section id="size_details_wrapper" class=" details_wrapper">
-              <div
-                class="product_details_text"
-                :id="showMoreText ? 'expanded' : ''"
-                ref="showMore"
-              >
-                <div class="long_description">
-                  <ul class="bulleted_attributes">
-                    <li>背面隐形拉链</li>
-                    <li>表层: 60% 三醋酸纤维/40% 聚酯纤维</li>
-                    <li>饰边: 100% 真丝</li>
-                    <li>衬里: 100% 聚酯纤维</li>
-                    <li>干洗</li>
-                    <li>中国进口</li>
-                  </ul>
-                  <div class="product_code">
-                    风格编号
-                    <span>TORYB48491</span>
-                  </div>
+            <section
+              id="size_details_wrapper"
+              :class="{ details_wrapper: true, active: showSizeDetails }"
+            >
+              <div id="size_fit_box">
+                <div class="new_product_measurements">
+                  <p class="measurements_heading">所列尺寸以 0 号为标准</p>
+                  <p>长度: 35 英寸/89 厘米，从肩部量起</p>
                 </div>
-                <span class="collapsed_fade"></span>
+                <div id="model_measurements_section">
+                  <table>
+                    <tr class="modelName">
+                      <th id="modal_measurements_label" class="row_title">
+                        模特尺寸
+                      </th>
+                      <th class="model_info model_name">Erica</th>
+                    </tr>
+                    <tr class="displaySize gray_row">
+                      <td class="row_title">模特穿着尺寸</td>
+                      <td class="model_info">0</td>
+                    </tr>
+                    <tr class="height">
+                      <td class="row_title">高度</td>
+                      <td class="model_info">5'9.0"/175厘米</td>
+                    </tr>
+                    <tr class="bust gray_row">
+                      <td class="row_title">胸围</td>
+                      <td class="model_info">31.0"/78厘米</td>
+                    </tr>
+                    <tr class="waist">
+                      <td class="row_title">腰围</td>
+                      <td class="model_info">24.0"/60厘米</td>
+                    </tr>
+                    <tr class="hips gray_row">
+                      <td class="row_title">臀部</td>
+                      <td class="model_info">32.0"/81厘米</td>
+                    </tr>
+                  </table>
+                </div>
+                <span class="size_chart_info_anchor"> 尺寸／尺码对照表</span>
               </div>
             </section>
           </div>
@@ -345,7 +392,9 @@
     <!-- 轮播图 -->
     <div class="likeContainer">
       <header class="header_title">
-        <label class="product_similarities">更多 Tory Burch</label>
+        <label class="product_similarities" id="similarities"
+          >更多 Tory Burch</label
+        >
         <div class="swiper-container" ref="swiper1">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -477,6 +526,8 @@
 </template>
 
 <script>
+// import {reqGoodsList,reqLikeGood} from '../api'
+
 import Swiper, { Navigation } from "swiper";
 
 import throttle from "lodash/throttle";
@@ -490,6 +541,7 @@ export default {
       showMoreText: false,
       showProductDetails: true,
       showSizeDetails: false,
+      size: "",
     };
   },
   methods: {
@@ -546,11 +598,15 @@ export default {
       this.showProductDetails = false;
       this.showSizeDetails = true;
     },
+    selectSize(value) {
+      this.size = value;
+    },
   },
   mounted() {
     this.eventWidth = this.$refs.event.clientWidth;
     this.eventHeight = this.$refs.event.offsetHeight;
-
+    
+    
     this.$nextTick(() => {
       new Swiper(this.$refs.swiper1, {
         slidesPerView: 5, // 每页显示轮播图的数量
@@ -589,6 +645,30 @@ html body {
   margin: 0;
   font-size: 14px;
   color: black;
+}
+.popover_content{
+  margin: 12px;
+  font-size: 12px;
+  .shippingInfoText{
+    margin-bottom: 10px;
+    .upper{
+      text-transform: uppercase;
+      line-height: 22px;
+    }
+    a{
+      color: #000;
+    }
+  }
+  .returnsInfoText{
+     margin-bottom: 10px;
+    .upper{
+      text-transform: uppercase;
+      line-height: 22px;
+    }
+    a{
+      color: #000;
+    }
+  }
 }
 .productContainer {
   width: 1024px;
@@ -765,7 +845,10 @@ html body {
           display: block;
         }
       }
-
+      a {
+        color: #000;
+        text-decoration: none;
+      }
       .image_bottom {
         margin-top: -40px;
         width: 100%;
@@ -774,6 +857,7 @@ html body {
         padding-left: 87px;
         text-align: center;
         font-weight: 500;
+        transition: opacity 150ms ease-out;
         cursor: pointer;
         .arrow {
           border: solid #000;
@@ -862,6 +946,12 @@ html body {
               padding: 0 5px;
               transition: background-color 0.2s ease-out, color 0.2s ease-out;
             }
+            .sizeBox.active {
+              font-weight: 700;
+              background-color: #000 !important;
+              color: #fff;
+              border: solid 1px #000;
+            }
             .sizeBox:hover {
               font-weight: 700;
               background-color: #000 !important;
@@ -920,10 +1010,10 @@ html body {
         font-weight: 400;
         font-size: 12px;
         margin-top: 20px;
-        a {
+        .tip {
           color: #000;
-          text-decoration: none;
-          border-bottom: 1px solid #000;
+          cursor: pointer;
+          text-decoration: underline;
         }
       }
       .productDetils {
@@ -978,7 +1068,7 @@ html body {
         .details_wrapper {
           display: block;
         }
-        .product_details_wrapper {
+        #product_details_wrapper {
           padding: 5px 10px 0 10px;
           .product_details_text {
             font-size: 12px;
@@ -1040,6 +1130,74 @@ html body {
               -webkit-transform: rotate(-135deg) translate(-3px, 0);
             }
           }
+        }
+        #size_details_wrapper {
+          padding-top: 5px;
+          #size_fit_box {
+            font-size: 12px;
+            .new_product_measurements {
+              padding-left: 10px;
+              line-height: 18px;
+              margin-bottom: 16px;
+              p {
+                margin-block-start: 0;
+                margin-block-end: 0;
+                margin-inline-start: 0;
+                margin-inline-end: 0;
+                line-height: 20px;
+              }
+              .measurements_heading {
+                font-weight: 700;
+              }
+            }
+            #model_measurements_section {
+              padding: 0 10px;
+              margin-bottom: 15px;
+              table {
+                width: 100%;
+                font-size: 12px;
+                white-space: nowrap;
+                border-collapse: collapse;
+                line-height: 34px;
+                max-width: 100%;
+                border-spacing: 0;
+                margin-bottom: 1em;
+                background-color: transparent;
+                #modal_measurements_label {
+                  padding-right: 5px;
+                }
+                .row_title {
+                  font-weight: 500;
+                  padding-left: 5px;
+                  text-align: start;
+                }
+                .model_info {
+                  text-align: center;
+                  padding-left: 15px;
+                  padding-right: 15px;
+                  border-left: solid 1px #e7e3df;
+                }
+                .model_name {
+                  font-weight: 600;
+                }
+                .gray_row {
+                  background-color: #f8f7f7;
+                }
+              }
+            }
+            .size_chart_info_anchor {
+              padding-left: 10px;
+              text-decoration: underline;
+              font-weight: 500;
+              cursor: pointer;
+            }
+          }
+        }
+        .details_wrapper {
+          display: none;
+        }
+        .details_wrapper.active {
+          display: block;
         }
       }
     }
