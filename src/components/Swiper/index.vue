@@ -5,65 +5,65 @@
     </header>
     <div class="swiper-container" @click="goToProduct">
       <!-- Additional required wrapper -->
-    <div class="swiper-container">
-      <!-- 轮播图内容 -->
-      <div class="swiper-wrapper">
-        <!-- 轮播图每一面内容-->
-        <div
-          class="swiper-slide"
-          v-for="(list, index) in bannersList[0]"
-          :key="index"
-        >
-          <div class="swiper_item" v-for="li in list" :key="li.id">
-            <img :src="li.primaryPicUrl" alt="" />
-            <div>{{ li.name }}</div>
-            <span>${{ li.counterPrice }}</span>
+      <div class="swiper-container">
+        <!-- 轮播图内容 -->
+        <div class="swiper-wrapper">
+          <!-- 轮播图每一面内容-->
+          <div
+            class="swiper-slide"
+            v-for="(list, index) in bannersList[0]"
+            :key="index"
+          >
+            <div class="swiper_item" v-for="li in list" :key="li.id">
+              <img :src="li.primaryPicUrl" alt="" />
+              <div>{{ li.name }}</div>
+              <span>${{ li.counterPrice }}</span>
+            </div>
+          </div>
+          <div
+            class="swiper-slide"
+            v-for="(list, index) in bannersList[1]"
+            :key="index"
+          >
+            <div class="swiper_item" v-for="li in list" :key="li.id">
+              <img :src="li.primaryPicUrl" alt="" />
+              <div>{{ li.name }}</div>
+              <span>${{ li.counterPrice }}</span>
+            </div>
+          </div>
+          <div
+            class="swiper-slide"
+            v-for="(list, index) in bannersList[2]"
+            :key="index"
+          >
+            <div class="swiper_item" v-for="li in list" :key="li.id">
+              <img :src="li.primaryPicUrl" alt="" />
+              <div>{{ li.name }}</div>
+              <span>${{ li.counterPrice }}</span>
+            </div>
+          </div>
+          <div
+            class="swiper-slide"
+            v-for="(list, index) in bannersList[3]"
+            :key="index"
+          >
+            <div class="swiper_item" v-for="li in list" :key="li.id">
+              <img :src="li.primaryPicUrl" alt="" />
+              <div>{{ li.name }}</div>
+              <span>${{ li.counterPrice }}</span>
+            </div>
           </div>
         </div>
-        <div
-          class="swiper-slide"
-          v-for="(list, index) in bannersList[1]"
-          :key="index"
-        >
-          <div class="swiper_item" v-for="li in list" :key="li.id">
-            <img :src="li.primaryPicUrl" alt="" />
-            <div>{{ li.name }}</div>
-            <span>${{ li.counterPrice }}</span>
-          </div>
-        </div>
-        <div
-          class="swiper-slide"
-          v-for="(list, index) in bannersList[2]"
-          :key="index"
-        >
-          <div class="swiper_item" v-for="li in list" :key="li.id">
-            <img :src="li.primaryPicUrl" alt="" />
-            <div>{{ li.name }}</div>
-            <span>${{ li.counterPrice }}</span>
-          </div>
-        </div>
-        <div
-          class="swiper-slide"
-          v-for="(list, index) in bannersList[3]"
-          :key="index"
-        >
-          <div class="swiper_item" v-for="li in list" :key="li.id">
-            <img :src="li.primaryPicUrl" alt="" />
-            <div>{{ li.name }}</div>
-            <span>${{ li.counterPrice }}</span>
-          </div>
-        </div>
+
+        <!-- 轮播图小圆点 -->
+        <div class="swiper-pagination"></div>
+
+        <!--轮播图前后按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
-
-      <!-- 轮播图小圆点 -->
-      <div class="swiper-pagination"></div>
-
-      <!--轮播图前后按钮 -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
     </div>
-    </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -106,7 +106,7 @@ export default {
       });
     },
     goToProduct() {
-      this.$router.push("/pageproduct");
+      this.$router.push("/productpage");
     },
   },
   watch: {
