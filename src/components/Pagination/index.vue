@@ -6,22 +6,19 @@
       </div>
       <div class="screen">
         <strong>查看</strong>
-        <span @click="handleClick(1)">1</span>
-        <span @click="handleClick(2)">2</span>
+        <span @click="handleClick(20)" :class="flag1 ? 'active' : ''">20</span>
+        <span @click="handleClick(40)" :class="flag2 ? 'active' : ''">40</span>
       </div>
     </div>
     <div class="pagination_right">
       <el-pagination
         small
-        @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         layout="prev, pager, next"
         :total="total"
         :page-size="pageSize"
         :current-page.sync="currentCage"
         :pager-count="5"
-        @prev-click="prevClick"
-        @next-click="nextClick"
       >
       </el-pagination>
     </div>
@@ -34,33 +31,39 @@ export default {
   props: ["updataShopList", "goodsTotal", "showSomeList"],
   data() {
     return {
-      pageSize: 5, //每页数量
-      total: 50, //总数
-      // pagerCount: 3, //页码按钮的数量，当总页数超过该值时会折叠
+      pageSize: 20, //每页数量
+      total: 63, //总数
       currentCage: 1, //当前页数
+      flag: false,
+      flag1: false,
+      flag2: false,
     };
   },
   methods: {
-    // handleSizeChange(val) {
-    //   console.log(`每页 ${val} 条`);
-    // },
-    handleSizeChange() {
-      console.log("handleSizeChange");
-    },
+    // 公式：（当前页  -   1） *   当前页面展示的条数  ,  当前页面展示的条数 * 当前页
+    // 公式： (currentCage - 1) * pageSize ,  pageSize * currentCage
+
+    // 当前页数改变时会触发
     handleCurrentChange() {
-      console.log(`handleCurrentChange`);
-      this.updataShopList();
-    },
-    prevClick() {
-      console.log("上一页");
-    },
-    nextClick() {
-      console.log("下一页");
+      let { pageSize, currentCage } = this;
+      this.updataShopList({ pageSize, currentCage });
     },
 
     // 处理页面数据展示条数
     handleClick(num) {
-      this.showSomeList(num);
+      this.flag = !this.flag;
+      let newNum = this.flag ? num : this.total;
+      this.showSomeList(newNum);
+
+      if (num === 20) {
+        this.flag1 = !this.flag1;
+        this.flag2 = false;
+      }
+
+      if (num === 40) {
+        this.flag2 = !this.flag2;
+        this.flag1 = false;
+      }
     },
   },
 };
@@ -89,6 +92,10 @@ export default {
         cursor: pointer;
       }
       span:hover {
+        font-weight: 800;
+        border-bottom: 2px solid;
+      }
+      .active {
         font-weight: 800;
         border-bottom: 2px solid;
       }

@@ -22,6 +22,14 @@ router.get("/banners", (ctx, next) => {
   ctx.body = swiperList
 })
 
+// 返回商品分类列表数据
+let categoryList = require("./datas/indexCateModule.json")
+router.get('/category', (ctx, next) => {
+  ctx.body = categoryList
+})
+
+
+
 app.listen("3000", (err) => {
   if (err) {
     console.log(err);
